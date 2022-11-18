@@ -7,13 +7,12 @@ public class SearchParam {
     private int page;
 
 
-    public String getAccount() {
-        return account;
-    }
+    public String getAccount() { return account; }
 
     public void setAccount(String account) {
         this.account = account;
     }
+
 
     public String getEmail() {
         return email;
@@ -22,6 +21,7 @@ public class SearchParam {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
     public int getPage() {
         return page;
