@@ -3,6 +3,7 @@ package com.example.adminStudy.repository;
 
 import com.example.adminStudy.AdminStudyApplicationTests;
 import com.example.adminStudy.model.entity.User;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDateTime;
@@ -24,11 +25,11 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
     public void create(){
         //String sql = insert into user(%s, %s, %d) value (account, email, age);
        User user = new User();
-       user.setAccount("TestUser03");
-       user.setEmail("TestUser03@gmail.com");
-       user.setPhoneNumber("010-3333-3333");
+       user.setAccount("TestUser02");
+       user.setEmail("TestUser02@gmail.com");
+       user.setPhoneNumber("010-2222-2222");
        user.setCreatedAt(LocalDateTime.now());
-       user.setCreatedBy("TestUser3");
+       user.setCreatedBy("TestUser2");
 
        User newUser = userRepository.save(user);
         System.out.println("newUser: " + newUser);
@@ -54,16 +55,15 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
     }
     @Test
     public void delete(){
-        Optional<User> user = userRepository.findById(2L);  // 조회
-        user.ifPresent(selectUser-> {userRepository.delete(selectUser);}
-                        );
-        Optional<User> deleteUser = userRepository.findById(2L);
-        if(deleteUser.isPresent()){
-            System.out.println("데이터 존재 : " + deleteUser.get());
-        }else{
-            System.out.println( "데이터 삭제로 데이터 없음"
-            );
-        }
-
+        Optional<User> user = userRepository.findById(2L);  // 조회  , L은 Id 타입 Long
+        Assert.assertTrue(user.isPresent());  // 현재 반드시 값이 있는지여부가  true 여야 통과되게 함
+        user.ifPresent(selectUser-> {userRepository.delete(selectUser);} );// 존재한다면, delete메소드로 삭제
+        Optional<User> deleteUser = userRepository.findById(2L);  // 다시 해당 아이디로 조회해서 deleteUser에 넣고 , 아래 if else 문으로 삭제유무 체크
+        Assert.assertFalse(deleteUser.isPresent());
+//        if(deleteUser.isPresent()){
+//            System.out.println("데이터 존재 : " + deleteUser.get());
+//        }else{
+//            System.out.println( "데이터 삭제로 데이터 없음");
+//        }
     }
 }
