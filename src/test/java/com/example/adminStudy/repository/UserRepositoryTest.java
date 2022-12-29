@@ -6,6 +6,8 @@ import com.example.adminStudy.model.entity.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -25,11 +27,11 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
     public void create(){
         //String sql = insert into user(%s, %s, %d) value (account, email, age);
        User user = new User();
-       user.setAccount("TestUser02");
-       user.setEmail("TestUser02@gmail.com");
-       user.setPhoneNumber("010-2222-2222");
+       user.setAccount("TestUser03");
+       user.setEmail("TestUser03@gmail.com");
+       user.setPhoneNumber("010-3333-3333");
        user.setCreatedAt(LocalDateTime.now());
-       user.setCreatedBy("TestUser2");
+       user.setCreatedBy("TestUser3");
 
        User newUser = userRepository.save(user);
         System.out.println("newUser: " + newUser);
@@ -44,9 +46,9 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
     }
     @Test
     public void update() {
-        Optional<User> user = userRepository.findById(2L);
+        Optional<User> user = userRepository.findById(3L);
         user.ifPresent(selectUser -> {
-            selectUser.setPhoneNumber("010-2222-2222");
+            selectUser.setPhoneNumber("010-3333-3333");
             selectUser.setUpdatedAt(LocalDateTime.now());
             selectUser.setUpdatedBy("update method()");
 
@@ -54,6 +56,7 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
         });
     }
     @Test
+    @Transactional
     public void delete(){
         Optional<User> user = userRepository.findById(2L);  // 조회  , L은 Id 타입 Long
         Assert.assertTrue(user.isPresent());  // 현재 반드시 값이 있는지여부가  true 여야 통과되게 함
