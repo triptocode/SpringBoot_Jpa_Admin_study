@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Optional;
+
 public class ItemRepositoryTest extends AdminStudyApplicationTests {
 
     @Autowired
@@ -24,6 +26,8 @@ public class ItemRepositoryTest extends AdminStudyApplicationTests {
 
     @Test
     public void read(){
-
+        Long id = 1L;
+        Optional<Item> item = itemRepository.findById(id);
+        item.ifPresent(i->{System.out.println(i);});
     }
 }
