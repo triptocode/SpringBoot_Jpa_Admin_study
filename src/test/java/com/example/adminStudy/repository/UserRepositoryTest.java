@@ -40,8 +40,8 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
     public void read(){
         Optional<User> user = userRepository.findById(1L);
         user.ifPresent(selectUser ->{
-            System.out.println("user : " + selectUser);
-            System.out.println("email : " + selectUser.getEmail());
+            //System.out.println("user : " + selectUser);
+            //System.out.println("email : " + selectUser.getEmail());
         });
     }
     @Test

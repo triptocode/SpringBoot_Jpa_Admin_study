@@ -28,6 +28,7 @@ public class ItemRepositoryTest extends AdminStudyApplicationTests {
     public void read(){
         Long id = 1L;
         Optional<Item> item = itemRepository.findById(id);
-        item.ifPresent(i->{System.out.println(i);});
+        Assert.assertTrue(item.isPresent());
+//        item.ifPresent(i->{System.out.println(i);}); 를 위의 Assert 코드로 변경해줌
     }
 }
