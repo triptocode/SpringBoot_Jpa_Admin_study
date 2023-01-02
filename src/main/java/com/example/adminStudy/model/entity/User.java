@@ -7,6 +7,7 @@ import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data // 기본생성자와 변수에 대해 get set 메소드 자동완성
 @AllArgsConstructor // 모든매개변수가 들어가는 생성자 자동완성
@@ -26,5 +27,7 @@ public class User {
     private String createdBy;
     private LocalDateTime updatedAt;
     private String updatedBy;
-
+    // [14]
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")  //
+    private List<OrderDetail> orderDetailList;  // <OrderDetail> 에서 OrderDetail라는 클래스를 의미
 }

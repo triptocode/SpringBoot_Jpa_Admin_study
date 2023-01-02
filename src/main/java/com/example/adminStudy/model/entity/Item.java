@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor // 모든매개변수가 들어가는 생성자 자동완성
@@ -20,4 +18,8 @@ public class Item {
     private String name;
     private Integer price;
     private String content;
+
+    // [14]
+    @OneToMany(fetch =FetchType.LAZY, mappedBy = "item")
+    private List<OrderDetail> orderDetailList;
 }

@@ -16,9 +16,9 @@ public class ItemRepositoryTest extends AdminStudyApplicationTests {
     @Test
     public void create(){
         Item item = new Item();
-        item.setName("노트북");
-        item.setPrice(10000);
-        item.setContent("Samsung Laptop");
+        item.setName("laptop");
+        item.setPrice(30000);
+        item.setContent("HP");
 
         Item newItem = itemRepository.save(item);
         Assert.assertNotNull(newItem);
