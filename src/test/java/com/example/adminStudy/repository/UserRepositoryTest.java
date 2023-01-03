@@ -40,8 +40,10 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
     @Test
     @Transactional // [14.jpa] 2. 수정
     public void read(){
-        Optional<User> user = userRepository.findById(2L);
-        user.ifPresent(selectUser ->  // 위 findById가 1인 user가 존재할때만 {}를 실행
+        // Optional<User> user = userRepository.findById(2L);
+        // [15 Query Method] 위의 코드를 하단으로 수정
+         Optional <User> user = userRepository.findByAccount("TestUser03");
+        user.ifPresent(selectUser ->  // 위 findById가 2인 user가 존재할때만 {}를 실행
                         {
                             // [13.jpa] 1.
                             // System.out.println("user : " + selectUser);

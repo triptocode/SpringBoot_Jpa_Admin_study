@@ -24,7 +24,6 @@ public class OrderDetail {
     @ManyToOne
     private User user;
     // hibernate 를 통한 연관관계 설정은 반드시 객체이름(User user)을 적어줘야한다.
-
     // [13]
     //private Long itemId;
     // [14] 더 상단 Long userId를 --> User user로 바꾼 이유와 동일
