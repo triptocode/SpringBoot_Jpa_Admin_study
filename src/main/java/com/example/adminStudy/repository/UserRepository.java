@@ -15,9 +15,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     // [15 Query Method]
     // 쿼리를 method 형식으로 아래처럼 작성하는것을말한다.
-    // " select from 테이블명 where account=?데이터값 "는
-    // " Optional<테이블객체>findByAccount(String ?데이터값받을파라미터명) " 와 같다.
+    // " select from 테이블명 where 컬럼명account=?데이터값 "는
+    // " Optional<테이블객체>findBy컬럼명Account(String ?데이터값받을변수명) " 와 같다.
     Optional<User> findByAccount(String account);
-    //Optional<User> findByEmail(String email);
-    //Optional<User> findByAccountAndEmail(String account, String email);
+    Optional<User> findByEmail(String email);
+    // select * from user where account = ? and email = ?
+    Optional<User> findByAccountAndEmail(String account, String email);
 }
